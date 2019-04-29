@@ -36,6 +36,8 @@ with open(fullpath, 'r', newline='') as csvfile:
                        
 
         bpy.context.scene.frame_set(frame_num)
+        bpy.data.scenes['Scene'].frame_end = frame_num + 1
+        
         for ob, position in zip(empties, coordinates):
             ob.location = position
             ob.keyframe_insert(data_path="location", index=-1)
